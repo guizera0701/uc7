@@ -1,45 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layout com Divs e Cores</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Projeto Moderno</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="cabecalho">
-        <h1>Projeto de Estrutura e Cores</h1>
-    </header>
+    <div class="container">
 
-    <main class="card-container">
-        
-        <div class="card card-primario">
-            <h2>Módulo HTML Básico</h2>
-            <p>Este é o primeiro bloco de conteúdo.</p>
-            <span class="destaque destaque-verde">Tag Div</span>
-            <span class="destaque destaque-amarelo">Classes</span>
-        </div>
+        <!-- Cabeçalho -->
+        <header>
+            <h1>Bem-vindo ao Projeto Moderno</h1>
+            <nav>
+                <a href="#sobre">Sobre</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </header>
 
-        <div class="card card-secundario">
-            <h2>Módulo CSS Externo</h2>
-            <p>Aqui aplicamos estilos para criar uma experiência visual.</p>
-            <span class="destaque destaque-laranja">Cores Hexa</span>
-            <span class="destaque destaque-azul">Box Model</span>
-        </div>
+        <!-- Seção Sobre -->
+        <section id="sobre">
+            <article>
+                <h2>Sobre o Projeto</h2>
+                <p>Este projeto é uma prática de HTML5 e CSS3 com estilo moderno, centralizado e minimalista.</p>
+                <p>Trabalhamos com cores cinza chumbo e branco para um visual clean e elegante.</p>
+            </article>
+        </section>
 
-        <div class="card card-terciario">
-            <h2>UX e Cores</h2>
-            <p>Usamos contraste e bom espaçamento para uma melhor usabilidade.</p>
-            <span class="destaque destaque-roxo">Contraste</span>
-            <span class="destaque destaque-vermelho">Tipografia</span>
-        </div>
+        <!-- Galeria -->
+        <section id="galeria">
+            <h2>Galeria</h2>
+            <div class="imagens">
+                <img src="https://via.placeholder.com/300" alt="Exemplo de imagem">
+                <img src="https://via.placeholder.com/300" alt="Outra imagem">
+            </div>
+        </section>
 
-    </main>
+        <!-- Contato / Rodapé -->
+        <footer id="contato">
+            <p>Projeto desenvolvido para fins educacionais.</p>
+            <p><a href="https://www.netacad.com/">Cisco Networking Academy</a></p>
+        </footer>
 
-    <footer class="rodape">
-        <p>&copy; 2024 Projeto Simples de Divs</p>
-    </footer>
-    
+    </div>
+
 </body>
 </html>
