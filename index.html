@@ -1,50 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Moderno</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Portfólio Criativo - Responsivo</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-    <div class="container">
+    <header class="main-header">
+        <h1 class="logo">Portfólio</h1>
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- Cabeçalho -->
-        <header>
-            <h1>Bem-vindo ao Projeto Moderno</h1>
-            <nav>
-                <a href="#sobre">Sobre</a>
-                <a href="#galeria">Galeria</a>
-                <a href="#contato">Contato</a>
-            </nav>
-        </header>
-
-        <!-- Seção Sobre -->
-        <section id="sobre">
-            <article>
-                <h2>Sobre o Projeto</h2>
-                <p>Este projeto é uma prática de HTML5 e CSS3 com estilo moderno, centralizado e minimalista.</p>
-                <p>Trabalhamos com cores cinza chumbo e branco para um visual clean e elegante.</p>
+    <main>
+        <section id="home" class="hero-section">
+            <article class="hero-content">
+                <h2>Olá, eu sou [Seu Nome]</h2>
+                <p>Desenvolvedor Front-End e Designer. Construindo experiências digitais modernas e acessíveis.</p>
+                <a href="#projetos" class="cta-button">Ver Projetos</a>
             </article>
+            <figure class="hero-image">
+                <img src="media/imagem-perfil.jpg" alt="Foto profissional de perfil">
+            </figure>
         </section>
 
-        <!-- Galeria -->
-        <section id="galeria">
-            <h2>Galeria</h2>
-            <div class="imagens">
-                <img src="https://via.placeholder.com/300" alt="Exemplo de imagem">
-                <img src="https://via.placeholder.com/300" alt="Outra imagem">
+        <section id="servicos" class="services-section">
+            <h3>Minhas Habilidades e Serviços</h3>
+            <div class="services-grid">
+                <article class="service-card">
+                    <h4>Web Design Responsivo</h4>
+                    <p>Criação de layouts fluidos com Flexbox e Grid.</p>
+                </article>
+                <article class="service-card">
+                    <h4>Desenvolvimento Front-End</h4>
+                    <p>HTML Semântico, CSS Avançado e JavaScript Moderno.</p>
+                </article>
+                <article class="service-card">
+                    <h4>Otimização e Acessibilidade</h4>
+                    <p>Melhoria de performance e aderência às diretrizes WCAG.</p>
+                </article>
             </div>
         </section>
 
-        <!-- Contato / Rodapé -->
-        <footer id="contato">
-            <p>Projeto desenvolvido para fins educacionais.</p>
-            <p><a href="https://www.netacad.com/">Cisco Networking Academy</a></p>
-        </footer>
+        <section id="midia" class="media-section">
+            <h3>Demonstração de Trabalho</h3>
+            <p>Um pequeno vídeo demonstrando um de meus projetos recentes:</p>
+            <video controls poster="media/video-poster.jpg" class="demo-video">
+                <source src="media/video-demo.mp4" type="video/mp4">
+                <source src="media/video-demo.webm" type="video/webm">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+        </section>
 
-    </div>
+        <section id="contato" class="contact-section">
+            <h3>Entre em Contato</h3>
+            <form action="#" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required aria-describedby="nome-ajuda">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required placeholder="seu.email@exemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="assunto">Assunto:</label>
+                    <select id="assunto" name="assunto" required>
+                        <option value="" disabled selected>Escolha um assunto</option>
+                        <option value="projeto">Novo Projeto</option>
+                        <option value="parceria">Parceria</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    Enviar Mensagem
+                    </button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Portfólio Criativo. Todos os direitos reservados.</p>
+        <div class="footer-links">
+            <a href="#">Termos de Uso</a>
+            <a href="#">Política de Privacidade</a>
+        </div>
+    </footer>
 
 </body>
 </html>
