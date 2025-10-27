@@ -1,349 +1,135 @@
-/* ================================================= */
-/* 1. RESET E ESTILOS BASE */
-/* ================================================= */
-
-:root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --background-light: #f8f9fa;
-    --text-dark: #212529;
-    --shadow-base: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: var(--text-dark);
-    background-color: var(--background-light);
-}
-
-a {
-    color: var(--primary-color);
-    text-decoration: none;
-    /* Transição para links */
-    transition: color 0.3s ease-in-out;
-}
-
-a:hover {
-    color: #0056b3;
-}
-
-section {
-    padding: 60px 20px;
-    margin: auto;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .container {
+    width: 90%;
     max-width: 1200px;
-}
-
-/* Pseudo-classe para zebra-striping em seções */
-section:nth-child(odd) {
-    background-color: #ffffff;
-}
-
-/* ================================================= */
-/* 2. CABEÇALHO E NAVEGAÇÃO (FLEXBOX) */
-/* ================================================= */
-
-.main-header {
-    background-color: var(--text-dark);
-    color: white;
-    padding: 15px 20px;
-    /* Aplica Flexbox para alinhar logo e navegação */
+    margin: auto;
+  }
+  
+  /* Header */
+  header {
+    background-color: #1a1a1a;
+    padding: 20px 0;
+  }
+  
+  header h1 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  nav ul {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: var(--shadow-base);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 1.5rem;
-}
-
-.nav-list {
+    justify-content: center;
     list-style: none;
-    /* Aplica Flexbox para alinhar itens do menu */
-    display: flex;
-    gap: 20px;
-}
-
-.nav-list a {
-    color: white;
-    padding: 5px 10px;
-    /* Transição simples ao passar o mouse */
-    transition: background-color 0.3s;
-}
-
-.nav-list a:hover {
-    background-color: var(--secondary-color);
-    border-radius: 4px;
-}
-
-/* ================================================= */
-/* 3. SEÇÃO HERO (FLEXBOX) */
-/* ================================================= */
-
-.hero-section {
-    /* Flexbox para layout lado a lado (texto + imagem) */
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    padding: 80px 20px;
-    background: linear-gradient(to right, var(--background-light), #e9ecef);
-}
-
-.hero-content {
-    flex: 1;
-}
-
-.hero-image {
-    flex: 1;
-    max-width: 400px;
-}
-
-.hero-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%; /* Imagem de perfil circular */
-    object-fit: cover;
-    /* Efeito visual: Sombra suave */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    /* Transição para efeito de hover */
-    transition: transform 0.5s ease-in-out;
-}
-
-.hero-image img:hover {
-    transform: scale(1.05) rotate(1deg);
-}
-
-.cta-button {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 12px 25px;
-    margin-top: 20px;
-    border-radius: 5px;
-    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
     font-weight: bold;
-    /* Transição para o botão */
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.cta-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px); /* Efeito de elevação */
-}
-
-/* ================================================= */
-/* 4. SEÇÃO DE SERVIÇOS (CSS GRID) */
-/* ================================================= */
-
-.services-section h3 {
+  }
+  
+  nav ul li a:hover {
+    color: #ffcc00;
+  }
+  
+  /* Hero */
+  .hero {
+    background-image: url('https://source.unsplash.com/1600x600/?cars');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+  }
+  
+  .hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+  
+  .btn {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #000;
+    padding: 10px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #e6b800;
+  }
+  
+  /* Modelos */
+  .modelos {
+    padding: 50px 0;
+    background-color: #fff;
+  }
+  
+  .modelos h2 {
     text-align: center;
     margin-bottom: 40px;
-    font-size: 2rem;
-}
-
-.services-grid {
-    /* Aplica CSS Grid para layout de colunas */
+    font-size: 2em;
+  }
+  
+  .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.service-card {
-    background-color: white;
-    padding: 30px;
+    gap: 20px;
+  }
+  
+  .card {
+    background-color: #fafafa;
     border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: center;
-    box-shadow: var(--shadow-base);
-    /* Transição para o efeito de hover na card */
-    transition: all 0.4s ease;
-    border-top: 5px solid var(--primary-color);
-}
-
-.service-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-}
-
-/* ================================================= */
-/* 5. SEÇÃO DE MÍDIA E FORMULÁRIO */
-/* ================================================= */
-
-.demo-video {
+  }
+  
+  .card img {
     width: 100%;
-    max-width: 800px;
-    display: block;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: var(--shadow-base);
-}
-
-/* Estilo do Formulário */
-.contact-form {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: var(--shadow-base);
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form select,
-.contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    /* Transição para o foco do campo */
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* Pseudo-classe :focus para acessibilidade e interatividade */
-.contact-form input:focus,
-.contact-form textarea:focus,
-.contact-form select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
-}
-
-/* Pseudo-classe :required (avançado) */
-.contact-form input:required:invalid {
-    border-color: #dc3545; /* Borda vermelha se obrigatório e inválido */
-}
-
-.submit-btn {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    /* Transição para o botão de submit */
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.submit-btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-1px);
-}
-
-/* Pseudo-elemento ::after para adicionar um ícone ou indicador */
-.submit-btn::after {
-    content: "→"; /* Ícone de seta */
-    font-weight: bold;
-    /* Animação simples (deslocamento) */
-    animation: pulse-arrow 1s infinite alternate;
-}
-
-@keyframes pulse-arrow {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(3px);
-    }
-}
-
-
-/* ================================================= */
-/* 6. RODAPÉ */
-/* ================================================= */
-
-.main-footer {
-    background-color: var(--text-dark);
-    color: white;
+    height: auto;
+  }
+  
+  .card h3 {
+    margin: 15px 0 10px;
+  }
+  
+  .card p {
+    padding: 0 15px 15px;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #1a1a1a;
+    color: #fff;
     text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
-}
-
-.footer-links a {
-    color: #adb5bd;
-    margin: 0 10px;
-}
-
-/* ================================================= */
-/* 7. MEDIA QUERIES (RESPONSIVIDADE) */
-/* ================================================= */
-
-/* Telas menores que 768px (Mobile) */
-@media (max-width: 768px) {
-    
-    /* Layout do Cabeçalho (Menu Empilhado) */
-    .main-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .nav-list {
-        /* Transforma a lista de Flexbox horizontal em vertical */
-        flex-direction: column;
-        width: 100%;
-        margin-top: 15px;
-    }
-
-    .nav-list li {
-        text-align: center;
-        width: 100%;
-    }
-    
-    .nav-list a {
-        display: block; /* Ocupa a largura total para facilitar o toque */
-        padding: 10px;
-    }
-    
-    /* Layout da Seção Hero (Conteúdo em Bloco) */
-    .hero-section {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 40px;
-    }
-
-    .hero-image {
-        margin-top: 30px;
-        max-width: 250px; /* Reduz o tamanho da imagem no mobile */
-    }
-    
-    /* Layout de Grid - A coluna única é tratada pelo auto-fit (minmax) */
-    
-    .services-grid {
-        gap: 20px;
-    }
-
-    section {
-        padding: 40px 15px;
-    }
-    
-    /* Pseudo-classe :not() (avançado): Remove margem superior do primeiro item na lista vertical */
-    .nav-list li:not(:first-child) {
-        border-top: 1px solid #343a40;
-    }
-}
+    padding: 20px 0;
+    margin-top: 50px;
+  }
+  
