@@ -1,135 +1,351 @@
+/* ======================================= */
+/* 0. RESET BÁSICO E VARIÁVEIS             */
+/* ======================================= */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
+}
+
+:root {
+    --cor-principal: #007bff;
+    --cor-secundaria: #333;
+    --cor-fundo: #f4f4f9;
+    --cor-texto: #333;
+    --transicao-rapida: 0.3s ease-out;
+}
+
+body {
+    font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-  }
-  
-  .container {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+.container {
     width: 90%;
     max-width: 1200px;
-    margin: auto;
-  }
-  
-  /* Header */
-  header {
-    background-color: #1a1a1a;
-    padding: 20px 0;
-  }
-  
-  header h1 {
-    color: #fff;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    flex-wrap: wrap;
-  }
-  
-  nav ul li {
-    margin: 0 15px;
-  }
-  
-  nav ul li a {
-    color: #fff;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+/* ======================================= */
+/* 1. ESTILOS DE ELEMENTOS BASE            */
+/* ======================================= */
+a {
+    color: var(--cor-principal);
     text-decoration: none;
+    /* Transição para links e botões (Requisito de Transições) */
+    transition: color var(--transicao-rapida), background-color var(--transicao-rapida), transform var(--transicao-rapida);
+}
+
+a:hover, a:focus {
+    color: var(--cor-secundaria);
+    /* Boa prática de Acessibilidade: Garante feedback visual ao focar */
+    outline: 2px solid var(--cor-principal); 
+    outline-offset: 2px;
+}
+
+/* Estilo para Botões e Links Animados */
+.btn-animado {
+    background-color: var(--cor-principal);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-animado:hover, .btn-animado:focus {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Animação: Leve levantamento */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ======================================= */
+/* 2. HEADER E NAVEGAÇÃO (Mobile First)    */
+/* ======================================= */
+header {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+}
+
+/* Esconder checkbox */
+#menu-toggle {
+    display: none;
+}
+
+/* Estilo Básico do Menu Hamburguer */
+.hamburger-menu {
+    display: block; /* Visível no mobile */
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--cor-secundaria);
+    margin: 5px 0;
+    /* Transição para a animação do X */
+    transition: transform var(--transicao-rapida); 
+}
+
+/* Menu esconde por padrão (Mobile) */
+nav {
+    display: none; 
+    position: absolute;
+    top: 60px; /* Abaixo do header */
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 10;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Estado Ativo do Menu Hamburguer (Quando o checkbox está marcado) */
+#menu-toggle:checked ~ nav {
+    display: block; /* Mostra o menu */
+}
+
+/* Animação do X no botão hamburguer */
+#menu-toggle:checked + .hamburger-menu span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+#menu-toggle:checked + .hamburger-menu span:nth-child(2) {
+    opacity: 0;
+}
+#menu-toggle:checked + .hamburger-menu span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+/* ======================================= */
+/* 3. CONTEÚDO PRINCIPAL E SEÇÕES          */
+/* ======================================= */
+section {
+    padding: 40px 0;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--cor-principal);
+}
+
+article {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
+    border-left: 5px solid var(--cor-principal);
+}
+
+/* ======================================= */
+/* 4. ESTILOS DO FORMULÁRIO AVANÇADO       */
+/* ======================================= */
+.form-avancado {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+legend {
     font-weight: bold;
-  }
-  
-  nav ul li a:hover {
-    color: #ffcc00;
-  }
-  
-  /* Hero */
-  .hero {
-    background-image: url('https://source.unsplash.com/1600x600/?cars');
-    background-size: cover;
-    background-position: center;
+    color: var(--cor-principal);
+    padding: 0 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Garante que labels e inputs fiquem em blocos separados para melhor leitura */
+label {
+    display: block; 
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* Transição para o foco (Requisito de Transições) */
+    transition: border-color var(--transicao-rapida), box-shadow var(--transicao-rapida);
+}
+
+/* Estilo de foco (Acessibilidade + UX) */
+input:focus, select:focus, textarea:focus {
+    border-color: var(--cor-principal);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Estilo para Radio e Checkbox */
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+/* Estilo do botão de envio */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+}
+
+
+/* ======================================= */
+/* 5. FOOTER                               */
+/* ======================================= */
+footer {
+    background: var(--cor-secundaria);
     color: white;
     text-align: center;
-    padding: 100px 20px;
-  }
-  
-  .hero h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-  }
-  
-  .hero p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-  }
-  
-  .btn {
-    display: inline-block;
-    background-color: #ffcc00;
-    color: #000;
-    padding: 10px 25px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
-  }
-  
-  .btn:hover {
-    background-color: #e6b800;
-  }
-  
-  /* Modelos */
-  .modelos {
-    padding: 50px 0;
-    background-color: #fff;
-  }
-  
-  .modelos h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2em;
-  }
-  
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  
-  .card {
-    background-color: #fafafa;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-  
-  .card img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .card h3 {
-    margin: 15px 0 10px;
-  }
-  
-  .card p {
-    padding: 0 15px 15px;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #1a1a1a;
-    color: #fff;
-    text-align: center;
     padding: 20px 0;
-    margin-top: 50px;
-  }
-  
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer a {
+    color: #a8d9ff;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.social-icon:hover {
+    background: var(--cor-principal);
+    transform: scale(1.1); /* Animação: Cresce ao passar o mouse */
+}
+
+
+/* ======================================= */
+/* 6. MEDIA QUERIES (DESIGN RESPONSIVO)    */
+/* ======================================= */
+
+/* Dispositivos Tablet (min-width: 768px) */
+@media (min-width: 768px) {
+    
+    /* Layout do Header (Desktop/Tablet) */
+    .hamburger-menu {
+        display: none; /* Esconde o botão hamburguer */
+    }
+    
+    nav {
+        display: block; /* Mostra a navegação padrão */
+        position: static;
+        width: auto;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    nav ul {
+        display: flex; /* Menu horizontal */
+        gap: 20px;
+    }
+
+    nav ul li {
+        padding: 0;
+        border-bottom: none;
+    }
+    
+    /* Layout do Formulário (2 colunas) */
+    .form-avancado fieldset {
+        /* Exemplo de Layout Flexível (Layouts Adaptativos) */
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .form-avancado .form-group {
+        flex: 1 1 calc(50% - 10px); /* Ocupa metade da largura (duas colunas) */
+    }
+    
+    /* As opções de Radio/Checkbox devem ocupar 100% para evitar quebra */
+    .form-avancado .form-group:has(input[type="radio"]), 
+    .form-avancado .form-group:has(input[type="checkbox"]) {
+        flex: 1 1 100%;
+    }
+    
+    /* Layout do Footer */
+    footer .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* Dispositivos Desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+    main.container {
+        display: flex;
+        gap: 40px;
+    }
+
+    #sobre {
+        flex: 2; /* Seção Sobre ocupa 2/3 */
+    }
+
+    #contato {
+        flex: 1; /* Formulário ocupa 1/3 */
+    }
+
+    /* Artigos em colunas no desktop */
+    #sobre article {
+        display: inline-block;
+        width: 48%;
+        margin-right: 2%;
+        vertical-align: top;
+    }
+}
