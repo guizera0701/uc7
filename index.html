@@ -1,119 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Web Responsivo e Acessível - NetAcad</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Front-End API Usuários</title>
 </head>
 <body>
+    <h1>Lista de Usuários</h1>
+    <ul id="lista"></ul>
 
-    <header>
-        <div class="container">
-            <h1>Logo do Projeto</h1>
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#contato" class="btn-animado">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <script>
+        async function carregarUsuarios() {
+            const resposta = await fetch("http://localhost:3000/usuarios");
+            const dados = await resposta.json();
 
-    <main class="container">
-        <section id="sobre">
-            <h2>🌍 Sobre Nós - Foco em Responsividade</h2>
-            <article>
-                <h3>Design Adaptativo</h3>
-                <p>Nossa missão é construir páginas web que se adaptam perfeitamente a qualquer dispositivo, desde desktops de alta resolução até smartphones. Utilizamos **media queries** avançadas para garantir uma experiência de usuário consistente e agradável, independentemente do tamanho da tela.</p>
-            </article>
-            <article>
-                <h3>Boas Práticas e Acessibilidade</h3>
-                <p>Todo o nosso código segue as diretrizes de acessibilidade (WCAG), utilizando estruturação semântica e garantindo que formulários e elementos interativos sejam acessíveis via teclado e leitores de tela. (Requisito de Acessibilidade/Usabilidade).</p>
-            </article>
-        </section>
+            const lista = document.getElementById("lista");
+            lista.innerHTML = "";
 
-        <hr>
-
-        <section id="contato">
-            <h2>📧 Formulário de Contato Avançado</h2>
-            
-            <form action="#" method="POST" class="form-avancado">
-                
-                <fieldset>
-                    <legend>Informações Pessoais</legend>
-                    <div class="form-group">
-                        <label for="nome">Nome Completo (Obrigatório):</label>
-                        <input type="text" id="nome" name="nome" required minlength="3">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email (Obrigatório):</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="telefone">Telefone (Opcional):</label>
-                        <input type="tel" id="telefone" name="telefone" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" placeholder="Ex: 11 99999-8888">
-                    </div>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Detalhes da Consulta</legend>
-                    
-                    <div class="form-group">
-                        <label for="assunto">Qual o seu principal interesse?</label>
-                        <select id="assunto" name="assunto" required>
-                            <option value="" disabled selected>Selecione uma opção</option>
-                            <option value="responsividade">Design Responsivo</option>
-                            <option value="acessibilidade">Acessibilidade Web</option>
-                            <option value="ux">Experiência do Usuário (UX)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <p>Como prefere ser contatado? (Escolha apenas um - Radio Buttons)</p>
-                        <label><input type="radio" name="contato" value="email" required> Email</label>
-                        <label><input type="radio" name="contato" value="telefone"> Telefone</label>
-                    </div>
-
-                    <div class="form-group">
-                        <p>Quais tecnologias você usa? (Múltipla escolha - Checkboxes)</p>
-                        <label><input type="checkbox" name="tecnologia" value="html"> HTML Semântico</label>
-                        <label><input type="checkbox" name="tecnologia" value="css"> CSS Responsivo</label>
-                        <label><input type="checkbox" name="tecnologia" value="js"> JavaScript</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="mensagem">Mensagem:</label>
-                        <textarea id="mensagem" name="mensagem" rows="5"></textarea>
-                    </div>
-                </fieldset>
-
-                <button type="submit" class="btn-animado btn-submit">Enviar Mensagem</button>
-
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Projeto NetAcad. Todos os direitos reservados. | <a href="#" class="link-animado">Política de Privacidade</a></p>
-            <div class="social-links">
-                <a href="#" class="social-icon link-animado">F</a>
-                <a href="#" class="social-icon link-animado">L</a>
-                <a href="#" class="social-icon link-animado">I</a>
-            </div>
-        </div>
-    </footer>
-
+            dados.forEach(user => {
+                const li = document.createElement("li");
+                li.textContent = `${user.id} - ${user.nome} - ${user.email}`;
+                lista.appendChild(li);
+            });
+        }
+        
+        carregarUsuarios();
+    </script>
 </body>
 </html>
